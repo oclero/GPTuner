@@ -1,8 +1,40 @@
-﻿<Window x:Class="Tuner.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="Tuner.MainWindow"
+        Title="Polytune" Height="620" Width="300" Background="#FFEEF3FA" Foreground="{x:Null}" ResizeMode="NoResize">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="470"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Accordeur-->
+        <Grid Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" Height="450" VerticalAlignment="Center" Width="Auto" Margin="10">
+            <Image Source="Assets/Images/polytune_mockup.png" Height="450" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Canvas Width="180" Height="145" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-3,25,0,0">
+                <!-- Ecran -->
+            </Canvas>
+        </Grid>
+
+
+        <!-- Mockup des cordes -->
+        <Rectangle Fill="#FFB9D1EA" Grid.Row="1"/>
+        <StackPanel HorizontalAlignment="Center" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <CheckBox Content="6" Style="{DynamicResource CheckBoxStyle1}" Margin="4"/>
+                <CheckBox Content="5" Style="{DynamicResource CheckBoxStyle1}" Margin="4"/>
+                <CheckBox Content="4" Style="{DynamicResource CheckBoxStyle1}" Margin="4"/>
+                <CheckBox Content="3" Style="{DynamicResource CheckBoxStyle1}" Margin="4"/>
+                <CheckBox Content="2" Style="{DynamicResource CheckBoxStyle1}" Margin="4"/>
+                <CheckBox Content="1" Style="{DynamicResource CheckBoxStyle1}" Margin="4"/>
+            </StackPanel>
+            <Button Content="Jouer cordes" HorizontalAlignment="Center" Margin="10" Style="{DynamicResource MyButton}" VerticalAlignment="Top" Command="{Binding Path=PlayStringsCommand}"/>
+        </StackPanel>
+
+
     </Grid>
 </Window>

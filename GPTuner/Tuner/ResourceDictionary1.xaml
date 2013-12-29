@@ -181,5 +181,8 @@
             </Setter.Value>
         </Setter>
     </Style>
-
+    <!-- DIODES : couleurs -->
+    <SolidColorBrush x:Key="DELColor-Green" Color="#FF3CD80E" />
+    <SolidColorBrush x:Key="DELColor-Red" Color="#FFFB3F3F" />
+    <SolidColorBrush x:Key="DELColor-Off" Color="#FF2C2C2C" />
 </ResourceDictionary>

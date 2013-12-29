@@ -21,14 +21,14 @@ namespace Tuner.Model
         #endregion
 
         #region Methods
-        public float GetError(int guitarString)
+        public double GetError(int guitarString)
         {
-            return Tuner.getError(guitarString);
+            return (double) Tuner.getError(guitarString);
         }
 
-        public float[] GetErrorsForAllStrings()
+        public double[] GetErrorsForAllStrings()
         {
-            float[] errors = new float[6];
+            double[] errors = new double[6];
             for (int i = 0; i < 6; i++)
             {
                 errors[i] = GetError(i);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Tuner.FrameworkMVVM;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,14 +14,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Tuner.View
+namespace Tuner.WPFTuners
 {
     /// <summary>
-    /// Logique d'interaction pour PolyphonicTunerView.xaml
+    /// Logique d'interaction pour ChromaticTuner.xaml
     /// </summary>
-    public partial class PolyphonicTunerView : UserControl
+    public partial class ChromaticTuner : BaseUserControl
     {
-        public PolyphonicTunerView()
+        public ChromaticTuner()
         {
             InitializeComponent();
         }

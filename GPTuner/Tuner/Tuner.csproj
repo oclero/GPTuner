@@ -85,14 +85,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="View\PolyphonicTunerView.xaml.cs">
-      <DependentUpon>PolyphonicTunerView.xaml</DependentUpon>
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\LevelToBrushConverter.cs" />
+    <Compile Include="Converters\LevelToColorConverter.cs" />
+    <Compile Include="WPFTuners\ChromaticTuner.xaml.cs">
+      <DependentUpon>ChromaticTuner.xaml</DependentUpon>
     </Compile>
-    <Page Include="ResourceDictionary1.xaml">
-      <SubType>Designer</SubType>
+    <Compile Include="WPFTuners\PolyphonicTuner.xaml.cs">
+      <DependentUpon>PolyphonicTuner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFTuners\Polytune.xaml.cs">
+      <DependentUpon>Polytune.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Dels\Del.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\ChromaticTunerView.xaml">
+    <Page Include="Dels\VUMeter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ResourceDictionary1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -104,11 +117,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ViewModel\ChromaticTunerViewModel.cs" />
-    <Compile Include="ViewModel\PolyphonicTunerViewModel.cs" />
-    <Compile Include="View\ChromaticTunerView.xaml.cs">
-      <DependentUpon>ChromaticTunerView.xaml</DependentUpon>
+    <Compile Include="Dels\Del.xaml.cs">
+      <DependentUpon>Del.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dels\VUMeter.xaml.cs">
+      <DependentUpon>VUMeter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrameworkMVVM\BaseUserControl.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -118,7 +133,15 @@
       <SubType>Designer</SubType>
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
     </Page>
-    <Page Include="View\PolyphonicTunerView.xaml">
+    <Page Include="WPFTuners\ChromaticTuner.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFTuners\PolyphonicTuner.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="WPFTuners\Polytune.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,6 +201,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

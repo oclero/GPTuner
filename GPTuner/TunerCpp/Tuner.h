@@ -9,6 +9,9 @@
 	#define EXTERNC
 #endif
 
+#include <stdio.h>      /* printf, NULL */
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
 #include <vector>
 
 namespace GPTuner{

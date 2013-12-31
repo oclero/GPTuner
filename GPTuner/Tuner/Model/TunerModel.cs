@@ -10,20 +10,29 @@ namespace Tuner.Model
     class TunerModel
     {
         #region Members
-        private TunerWrapper Tuner;
+        //private TunerWrapper tuner;
+        // Provisoire
+        private Random random = new Random();
         #endregion
 
         #region Constructeur
         public TunerModel()
         {
-            Tuner = new TunerWrapper();
+            // TODO corriger exception
+            //tuner = new TunerWrapper();
         }
         #endregion
 
         #region Methods
         public double GetError(int guitarString)
         {
-            return (double) Tuner.getError(guitarString);
+            // TODO corriger exception
+            //return (double) tuner.getError(guitarString);
+
+            // Provisoire :
+            double maximum = 0.5;
+            double minimum = -0.5;
+            return random.NextDouble() * (maximum - minimum) + minimum;
         }
 
         public double[] GetErrorsForAllStrings()

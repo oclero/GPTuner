@@ -25,7 +25,7 @@ namespace Tuner.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("$(SolutionDir)Debug")]
+        [global::System.Configuration.DefaultSettingValueAttribute("$(SolutionDir)\\Debug;$(SolutionDir)\\TunerWrapper")]
         public string AdditionnalPaths {
             get {
                 return ((string)(this["AdditionnalPaths"]));

@@ -27,17 +27,6 @@ namespace Tuner
     {
         private static int DEFAULT_NB_STRINGS = 6;
 
-        #region Classe interne GuitarString
-        /// <summary>
-        /// Classe toute simple pour simuler une corde
-        /// </summary>
-        public class GuitarString
-        {
-            public int Number { get; set; }
-            public bool IsPlayed { get; set; }
-        }
-        #endregion
-
         #region Strings
         private List<GuitarString> playedStrings;
         public List<GuitarString> PlayedStrings
@@ -61,7 +50,7 @@ namespace Tuner
                 playedStrings.Add(new GuitarString { Number = i + 1, IsPlayed = false });
             }
             // Commandes
-            CreateSaveCommand();
+            CreatePlayCommand();
         }
         #endregion
 
@@ -89,47 +78,16 @@ namespace Tuner
         /// </summary>
         public void PlayStringsExecute()
         {
-            int nbPlayed = 0;
-            foreach (GuitarString guitarString in playedStrings)
-            {
-                if (guitarString.IsPlayed)
-                {
-                    nbPlayed++;
-                }
-            }
-            switch (nbPlayed)
-            {
-                case 0:
-                    polytune.DisplayChromaticTuner = false;
-                    polytune.DisplayPolyphonicTuner = false;
-                    break;
-                case 1:
-                    polytune.DisplayChromaticTuner = true;
-                    polytune.DisplayPolyphonicTuner = false;
-                    break;
-                default:
-                    polytune.DisplayChromaticTuner = false;
-                    polytune.DisplayPolyphonicTuner = true;
-                    break;
-            }
-            // TODO
-            //getErrors();
-            
+            polytune.displayErrors(playedStrings);
         }
 
-        private void CreateSaveCommand()
+        private void CreatePlayCommand()
         {
             PlayStringsCommand = new RelayCommand(PlayStringsExecute, CanExecutePlayStringsCommand);
         }
 
         #endregion
 
-        private void getErrors()
-        {
-            TunerModel mTuner = new TunerModel();
-            double[] errors = mTuner.GetErrorsForAllStrings();
-            polytune.displayValues(errors);
-        }
     }
 
 }

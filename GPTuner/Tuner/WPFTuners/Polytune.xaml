@@ -20,8 +20,8 @@
                     <RowDefinition Height="70"/>
                 </Grid.RowDefinitions>
                 <!-- Ecran -->
-                <tuners:PolyphonicTuner x:Name="polyphonic" Visibility="{Binding DisplayPolyphonicTuner, Converter={StaticResource BooleanToVisibilityConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <tuners:ChromaticTuner x:Name="chromatic" Visibility="{Binding DisplayChromaticTuner, Converter={StaticResource BooleanToVisibilityConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <tuners:PolyphonicTuner x:Name="polyphonic" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <tuners:ChromaticTuner x:Name="chromatic" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
         </Grid>
     </Grid>

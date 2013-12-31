@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="AdditionnalPaths" Type="System.String" Scope="User">
-      <Value Profile="(Default)">$(SolutionDir)Debug</Value>
+      <Value Profile="(Default)">$(SolutionDir)\Debug;$(SolutionDir)\TunerWrapper</Value>
     </Setting>
   </Settings>
 </SettingsFile>

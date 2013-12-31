@@ -31,7 +31,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -88,14 +88,15 @@
     <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\LevelToBrushConverter.cs" />
     <Compile Include="Converters\LevelToColorConverter.cs" />
-    <Compile Include="WPFTuners\ChromaticTuner.xaml.cs">
-      <DependentUpon>ChromaticTuner.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WPFTuners\PolyphonicTuner.xaml.cs">
-      <DependentUpon>PolyphonicTuner.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Model\GuitarString.cs" />
+    <Compile Include="Model\VUMeterModel.cs" />
+    <Compile Include="WPFTuners\ChromaticTuner.cs" />
+    <Compile Include="WPFTuners\PolyphonicTuner.cs" />
     <Compile Include="WPFTuners\Polytune.xaml.cs">
       <DependentUpon>Polytune.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFTuners\PolytuneScreen.xaml.cs">
+      <DependentUpon>PolytuneScreen.xaml</DependentUpon>
     </Compile>
     <Page Include="Dels\Del.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -133,15 +134,11 @@
       <SubType>Designer</SubType>
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
     </Page>
-    <Page Include="WPFTuners\ChromaticTuner.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="WPFTuners\PolyphonicTuner.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="WPFTuners\Polytune.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPFTuners\PolytuneScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

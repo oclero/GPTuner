@@ -1,19 +1,19 @@
 #include "Tuner.h"
 
-GPTuner::Tuner::Tuner() {
+Tuner::Tuner() {
 	m_Tuning = new std::vector<int>(6);
 	srand((unsigned)time(NULL));
 }
 
-GPTuner::Tuner::~Tuner(){
+Tuner::~Tuner(){
 	delete m_Tuning;
 }
 
-void GPTuner::Tuner::setTuning(const std::vector<int>& tuning){
+void Tuner::setTuning(const std::vector<int>& tuning){
 	m_Tuning = new std::vector<int>(tuning);
 }
 
-float GPTuner::Tuner::getError(int string){
+float Tuner::getError(int string){
 	//int target_midi_note = (*m_Tuning)[string];
 	// Arbitrary lower and higher tone limits
 	float high = 1.0;
@@ -23,5 +23,5 @@ float GPTuner::Tuner::getError(int string){
 	return error;
 }
 
-EXTERNC TUNER_API GPTuner::Tuner* GPTuner::Tuner_New(){return new Tuner();}
-EXTERNC TUNER_API void GPTuner::Tuner_Delete(Tuner* tuner){delete tuner;}
+EXTERNC TUNER_API Tuner* Tuner_New(){return new Tuner();}
+EXTERNC TUNER_API void Tuner_Delete(Tuner* tuner){delete tuner;}

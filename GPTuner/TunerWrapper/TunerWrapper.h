@@ -9,11 +9,11 @@ namespace GPTunerWrapper {
 	public ref class TunerWrapper
 	{
 	private:
-		GPTuner::Tuner* m_Tuner;
+		Tuner* m_Tuner;
 	public:
-		TunerWrapper() { m_Tuner = GPTuner::Tuner_New();}
+		TunerWrapper() { m_Tuner = Tuner_New();}
 
-		~TunerWrapper(){ GPTuner::Tuner_Delete(m_Tuner); }
+		~TunerWrapper(){ Tuner_Delete(m_Tuner); }
 
 		void setTuning(const std::vector<int>% tuning);
 		float getError(int string);

@@ -1,17 +1,11 @@
-﻿<mvvm:BaseUserControl x:Class="Tuner.WPFTuners.Polytune"
+﻿<UserControl x:Class="Tuner.Polytune.Polytune"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d"
-             xmlns:mvvm="clr-namespace:Tuner.FrameworkMVVM"
-             xmlns:converters="clr-namespace:Tuner.Converters"
-		     xmlns:tuners="clr-namespace:Tuner.WPFTuners">
-    <UserControl.Resources>
-        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-    </UserControl.Resources>
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:polytune="clr-namespace:Tuner.Polytune"
+             mc:Ignorable="d">
     <Grid>
-        <!-- Accordeur-->
         <Grid Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" Height="450" VerticalAlignment="Center" Width="Auto" Margin="10">
             <Image Source="../Assets/Images/polytune_mockup.png" Height="450" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Grid Width="180" Height="140" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="-3,30,0,0">
@@ -19,10 +13,15 @@
                     <RowDefinition Height="70"/>
                     <RowDefinition Height="70"/>
                 </Grid.RowDefinitions>
-                <!-- Ecran -->
-                <tuners:PolyphonicTuner x:Name="polyphonic" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <tuners:ChromaticTuner x:Name="chromatic" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <!-- Ecran des VUMetres-->
+                <Viewbox Grid.Row="0">
+                    <polytune:DelGrid x:Name="delGrid" Height="70"/>
+                </Viewbox>
+                <!-- Ecran de la note jouée -->
+                <Viewbox Grid.Row="1" Height="30" Margin="30,20,0,20">
+                    <polytune:DelGrid x:Name="letterGrid" />
+                </Viewbox>
             </Grid>
         </Grid>
     </Grid>
-</mvvm:BaseUserControl>
+</UserControl>

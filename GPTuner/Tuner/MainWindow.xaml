@@ -1,11 +1,15 @@
 ﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="Tuner.MainWindow"
-        Title="Polytune" Height="620" Width="300" Background="#FFEEF3FA" Foreground="{x:Null}" ResizeMode="NoResize"
-		xmlns:dels="clr-namespace:Tuner.Dels"
-    	xmlns:converters="clr-namespace:Tuner.Converters"
-		xmlns:tuners="clr-namespace:Tuner.WPFTuners">
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+        xmlns:polytune="clr-namespace:Tuner.Polytune"
+        x:Class="Tuner.MainWindow"
+        Title="Polytune"
+        Height="620" Width="300"
+        Background="#FFEEF3FA"
+        Foreground="{x:Null}"
+        ResizeMode="NoResize"
+		>
     
     <Grid>
         <Grid.RowDefinitions>
@@ -18,7 +22,7 @@
 
         <!-- Accordeur-->
         <Grid Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" Height="Auto" VerticalAlignment="Center" Width="Auto">
-            <tuners:Polytune x:Name="polytune"></tuners:Polytune>
+            <polytune:Polytune x:Name="PolytuneView"/>
         </Grid>
 
         <!-- Simulation des cordes -->

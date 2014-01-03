@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:polytune="clr-namespace:Tuner.Polytune"
 	xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero">
 
     <!-- COLORS FOR GUI -->
@@ -11,8 +12,8 @@
     <SolidColorBrush x:Key="GUIColor-ShadowGrey" Color="#FF878787" />
     <SolidColorBrush x:Key="GUIColor-BackgroundHighlight" Color="#FF494949" />
     <SolidColorBrush x:Key="GUIColor-Background" Color="#FF3c3c3b" />
-	<!-- TIMINGS -->
-	<KeyTime x:Key="DefaultUITiming">0:0:0.1</KeyTime>
+    <!-- TIMINGS -->
+    <KeyTime x:Key="DefaultUITiming">0:0:0.1</KeyTime>
 
     <!-- Normal button -->
     <Style x:Key="MyButton" TargetType="{x:Type Button}">
@@ -53,7 +54,7 @@
                     </ControlTemplate.Resources>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="True">
-							<Trigger.EnterActions>
+                            <Trigger.EnterActions>
                                 <BeginStoryboard Storyboard="{StaticResource Border_Appear}"/>
                             </Trigger.EnterActions>
                             <Trigger.ExitActions>
@@ -125,21 +126,21 @@
                         </Storyboard>
                     </ControlTemplate.Resources>
                     <!-- template -->
-                        <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" LastChildFill="True">
-                            <Grid DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <Rectangle Width="20" Height="20" Fill="White"/>
-                                <Border x:Name="MyBorder" BorderBrush="{DynamicResource GUIColor-Default}" BorderThickness="2" Opacity="0" />
-                                <Viewbox x:Name="CheckMark" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" Height="45.752" Width="62.599">
-                                        <Path
+                    <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" LastChildFill="True">
+                        <Grid DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Rectangle Width="20" Height="20" Fill="White"/>
+                            <Border x:Name="MyBorder" BorderBrush="{DynamicResource GUIColor-Default}" BorderThickness="2" Opacity="0" />
+                            <Viewbox x:Name="CheckMark" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" Height="45.752" Width="62.599">
+                                    <Path
                                             Data="F1M25.7067,29.976L8.8607,13.13L-0.000299999999999301,21.99L25.9667,47.957L25.9667,47.956L62.5987,11.325L53.4767,2.205z"
                                             Fill="{DynamicResource GUIColor-Default}" Height="45.752" Stretch="Fill" Width="62.599"/>
-                                    </Canvas>
-                                </Viewbox>
-                            </Grid>
-							<ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True"  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                        <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True"  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                     </DockPanel>
-                   <!-- triggers -->
+                    <!-- triggers -->
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsFocused" Value="true">
                             <Trigger.EnterActions>
@@ -185,4 +186,18 @@
     <SolidColorBrush x:Key="DELColor-Green" Color="#FF3CD80E" />
     <SolidColorBrush x:Key="DELColor-Red" Color="#FFFB3F3F" />
     <SolidColorBrush x:Key="DELColor-Off" Color="#FF2C2C2C" />
+
+    <DataTemplate x:Key="DataTemplate_Level2">
+        <polytune:Del On="{Binding On}" Level="{Binding Level}"/>
+    </DataTemplate>
+
+    <DataTemplate x:Key="DataTemplate_Level1">
+        <ItemsControl ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate_Level2}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </DataTemplate>
 </ResourceDictionary>

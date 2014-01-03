@@ -85,24 +85,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
-    <Compile Include="Converters\LevelToBrushConverter.cs" />
-    <Compile Include="Converters\LevelToColorConverter.cs" />
-    <Compile Include="Model\GuitarString.cs" />
-    <Compile Include="Model\VUMeterModel.cs" />
-    <Compile Include="WPFTuners\ChromaticTuner.cs" />
-    <Compile Include="WPFTuners\PolyphonicTuner.cs" />
-    <Compile Include="WPFTuners\Polytune.xaml.cs">
+    <Compile Include="Polytune\Del.xaml.cs">
+      <DependentUpon>Del.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Polytune\DelGrid.xaml.cs">
+      <DependentUpon>DelGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Polytune\Model\DelModel.cs" />
+    <Compile Include="Polytune\Polytune.xaml.cs">
       <DependentUpon>Polytune.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WPFTuners\PolytuneScreen.xaml.cs">
-      <DependentUpon>PolytuneScreen.xaml</DependentUpon>
-    </Compile>
-    <Page Include="Dels\Del.xaml">
+    <Compile Include="Polytune\ViewModel\ChromaticTunerContext.cs" />
+    <Compile Include="Polytune\ViewModel\DelColumnFactory.cs" />
+    <Compile Include="Polytune\ViewModel\NoteLetterContext.cs" />
+    <Compile Include="Polytune\ViewModel\PolyphonicTunerContext.cs" />
+    <Compile Include="Polytune\ViewModel\TunerContext.cs" />
+    <Compile Include="TunerMockup\Model\GuitarString.cs" />
+    <Compile Include="TunerMockup\Model\NoteIdentifier.cs" />
+    <Compile Include="TunerMockup\Model\PlayedNote.cs" />
+    <Compile Include="TunerMockup\Model\ProcessedSignal.cs" />
+    <Page Include="Polytune\Del.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Dels\VUMeter.xaml">
+    <Page Include="Polytune\DelGrid.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -118,13 +124,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Dels\Del.xaml.cs">
-      <DependentUpon>Del.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dels\VUMeter.xaml.cs">
-      <DependentUpon>VUMeter.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FrameworkMVVM\BaseUserControl.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -134,17 +133,12 @@
       <SubType>Designer</SubType>
       <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
     </Page>
-    <Page Include="WPFTuners\Polytune.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WPFTuners\PolytuneScreen.xaml">
+    <Page Include="Polytune\Polytune.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\TunerModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

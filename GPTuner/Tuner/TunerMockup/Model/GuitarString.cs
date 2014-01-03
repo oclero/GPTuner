@@ -1,4 +1,4 @@
-﻿namespace Tuner.Model
+﻿namespace Tuner.TunerMockup.Model
 {
     public class GuitarString
     {

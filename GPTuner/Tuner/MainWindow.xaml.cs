@@ -1,22 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using Tuner.Model;
+using System.Collections.Generic;
+using Tuner.TunerMockup.Model;
 
 namespace Tuner
 {
@@ -27,32 +13,25 @@ namespace Tuner
     {
         private static int DEFAULT_NB_STRINGS = 6;
 
-        #region Strings
-        private List<GuitarString> playedStrings;
-        public List<GuitarString> PlayedStrings
-        {
-            get { return playedStrings; }
-            //set { NotifyPropertyChanged(ref playedStrings, value); }
-            set { playedStrings = value; }
-        }
-        #endregion
+        public List<GuitarString> PlayedStrings {get; set;}
 
-        #region Constructor
         public MainWindow()
         {
             InitializeComponent();
-            // Pour simplifier, cette classe sera le Datacontexte
+
+            // Pour simplifier, cette classe sera son propre Datacontext
             DataContext = this;
+
             // Remplir la liste des cordes jouees (nombre de cordes "hardcoded" à 6)
-            playedStrings = new List<GuitarString>();
+            PlayedStrings = new List<GuitarString>();
             for (int i = 0; i < DEFAULT_NB_STRINGS; i++)
             {
-                playedStrings.Add(new GuitarString { Number = i + 1, IsPlayed = false });
+                PlayedStrings.Add(new GuitarString { Number = i + 1, IsPlayed = false });
             }
+
             // Commandes
             CreatePlayCommand();
         }
-        #endregion
 
         #region Command : Jouer les cordes
         public ICommand PlayStringsCommand
@@ -66,7 +45,7 @@ namespace Tuner
         /// </summary>
         private bool CanExecutePlayStringsCommand()
         {
-            foreach (GuitarString guitarString in playedStrings)
+            foreach (GuitarString guitarString in PlayedStrings)
             {
                 if (guitarString.IsPlayed) { return true; }
             }
@@ -78,7 +57,8 @@ namespace Tuner
         /// </summary>
         public void PlayStringsExecute()
         {
-            polytune.displayErrors(playedStrings);
+            NoteIdentifier identifier = new NoteIdentifier();
+            PolytuneView.Signal = identifier.getProcessedSignal(PlayedStrings);
         }
 
         private void CreatePlayCommand()

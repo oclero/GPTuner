@@ -3,9 +3,7 @@ using Tuner.TunerMockup.Model;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Threading;
 using System;
-using System.Windows.Threading;
 
 namespace Tuner.Polytune
 {

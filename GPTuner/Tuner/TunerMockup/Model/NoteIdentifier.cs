@@ -46,7 +46,7 @@ namespace Tuner.TunerMockup.Model
                     note.GuitarStringNumber = guitarStringNum;
 
                     // Avec la dll C++/CLI
-                    double error = tunerWrapper.getError(guitarStringNum);
+                    double error = (double) tunerWrapper.getError(guitarStringNum);
                     note.ActualNote = note.TargetedNote + error;
 
                     // Ajout de la note

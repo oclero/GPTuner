@@ -108,38 +108,38 @@ namespace Tuner.Polytune.ViewModel
 
         private static bool[,] FLeds = { 
                                {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
+                               {true, true, true, true, false, false, false,},
+                               {true, false, false, false, false, false, false,},
+                               {true, true, true, false, false, false, false,},
+                               {true, false, false, false, false, false, false,},
+                               {true, false, false, false, false, false, false,},
                                };
 
         private static bool[,] FSharpLeds = { 
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
+                               {false, false, false, false, false, true, true,},
+                               {true, true, true, true, false, true, true,},
+                               {true, false, false, false, false, false, false,},
+                               {true, true, true, false, false, false, false,},
+                               {true, false, false, false, false, false, false,},
+                               {true, false, false, false, false, false, false,},
                                };
 
         private static bool[,] GLeds = { 
                                {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
+                               {false, true, true, true, false, false, false,},
+                               {true, false, false, false, false, false, false,},
+                               {true, false, true, true, false, false, false,},
+                               {true, false, false, true, false, false, false,},
+                               {false, true, true, false, false, false, false,},
                                };
 
         private static bool[,] GSharpLeds = { 
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
-                               {false, false, false, false, false, false, false,},
+                               {false, false, false, false, false, true, true,},
+                               {false, true, true, true, false, true, true,},
+                               {true, false, false, false, false, false, false,},
+                               {true, false, true, true, false, false, false,},
+                               {true, false, false, true, false, false, false,},
+                               {false, true, true, false, false, false, false,},
                                };
 
         private static bool[,] SquareLeds = { 

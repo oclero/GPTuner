@@ -3,6 +3,7 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.Generic;
 using Tuner.TunerMockup.Model;
+using System;
 
 namespace Tuner
 {
@@ -58,6 +59,12 @@ namespace Tuner
         /// "Joue" les cordes et declenche l'affichage en consequence
         /// </summary>
         public void PlayStringsExecute()
+        {
+            Action actionPlayStrings = new Action(delegatePlayStrings);
+            this.Dispatcher.Invoke(actionPlayStrings);
+        }
+
+        public void delegatePlayStrings()
         {
             PolytuneView.Signal = identifier.getProcessedSignal(PlayedStrings);
         }

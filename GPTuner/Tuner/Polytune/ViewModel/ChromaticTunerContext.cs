@@ -26,6 +26,7 @@ namespace Tuner.Polytune.ViewModel
             {
                 note = value;
                 updateDelsList();
+                OnNotifyPropertyChanged("Note");
             }
         }
 
@@ -47,12 +48,19 @@ namespace Tuner.Polytune.ViewModel
 
             if (indexMiddle != indexValue)
             {
-                delsColumns[indexMiddle] = DelColumnFactory.newColumn(ScreenHeight, true, 2);
-                delsColumns[indexValue] = DelColumnFactory.newColumn(ScreenHeight, true, 1);
+                delsColumns[indexMiddle] = DelColumnFactory.newColumn(ScreenHeight, true, Del.LEVEL_RIGHT);
+                delsColumns[indexValue] = DelColumnFactory.newColumn(ScreenHeight, true, Del.LEVEL_WRONG);
             }
             else
             {
-                delsColumns[indexMiddle] = DelColumnFactory.newColumn(ScreenHeight, true, 1);
+                delsColumns[indexMiddle] = DelColumnFactory.newColumn(ScreenHeight, true, Del.LEVEL_RIGHT);
+                int middleIndexforAColumn = ScreenHeight / 2;
+                // On rajoute des barres horizontales de chaque côté si la note est juste
+                for (int i = 0; i < 3; i++)
+                {
+                    delsColumns[i] = DelColumnFactory.newPolyphonicColumn(middleIndexforAColumn, middleIndexforAColumn, ScreenHeight);
+                    delsColumns[ScreenWidth - 1 - i] = DelColumnFactory.newPolyphonicColumn(middleIndexforAColumn, middleIndexforAColumn, ScreenHeight);
+                }
             }
             DelsList.Clear();
             foreach(List<DelModel> lst in delsColumns)

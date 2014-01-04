@@ -29,6 +29,7 @@ namespace Tuner.Polytune.ViewModel
             {
                 notes = value;
                 updateDelsList();
+                OnNotifyPropertyChanged("Notes");
             }
         }
 

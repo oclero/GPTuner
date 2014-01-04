@@ -3,6 +3,9 @@ using Tuner.TunerMockup.Model;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Threading;
+using System;
+using System.Windows.Threading;
 
 namespace Tuner.Polytune
 {
@@ -57,6 +60,13 @@ namespace Tuner.Polytune
         /// </summary>
         /// <param name="signal">Signal à afficher</param>
         public void updateScreen(ProcessedSignal signal)
+        {
+            Action<ProcessedSignal> actionUpdateScreen = new Action<ProcessedSignal>(delegateUpdateScreen);
+            //delegateUpdateScreen(signal);
+            this.Dispatcher.Invoke(actionUpdateScreen, new Object[] { signal });
+        }
+
+        public void delegateUpdateScreen(ProcessedSignal signal)
         {
             switch (signal.Notes.Count)
             {

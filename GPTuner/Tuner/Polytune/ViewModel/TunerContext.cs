@@ -3,13 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.ComponentModel;
 
 namespace Tuner.Polytune.ViewModel
 {
     /// <summary>
     /// Classe abstraite représentant un ViewModel du composant DelGrid
     /// </summary>
-    public abstract class TunerContext
+    public abstract class TunerContext : INotifyPropertyChanged
     {
         public static int DEFAULT_NB_STRINGS = 6;
         public static int DEFAULT_SCREEN_HEIGHT = 5;
@@ -26,6 +27,7 @@ namespace Tuner.Polytune.ViewModel
             {
                 nbStrings = value;
                 OnNbStringsChanged();
+                OnNotifyPropertyChanged("NbStrings");
             }
         }
 
@@ -37,6 +39,7 @@ namespace Tuner.Polytune.ViewModel
             {
                 screenHeight = value;
                 OnScreenHeightChanged();
+                OnNotifyPropertyChanged("ScreenHeight");
             }
         }
 
@@ -48,6 +51,7 @@ namespace Tuner.Polytune.ViewModel
             {
                 screenWidth = value;
                 OnScreenWidthChanged();
+                OnNotifyPropertyChanged("ScreenWidth");
             }
         }
 
@@ -58,6 +62,7 @@ namespace Tuner.Polytune.ViewModel
             {
                 threshold = value;
                 updateSteps();
+                OnNotifyPropertyChanged("Threshold");
             }
         }
 
@@ -73,6 +78,7 @@ namespace Tuner.Polytune.ViewModel
             {
                 nbSteps = value;
                 updateSteps();
+                OnNotifyPropertyChanged("NbSteps");
             }
         }
 
@@ -142,5 +148,16 @@ namespace Tuner.Polytune.ViewModel
 
         protected abstract void OnScreenWidthChanged();
 
+        #region INotifyPropertyChanged Members
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnNotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        #endregion INotifyPropertyChanged Members
     }
 }

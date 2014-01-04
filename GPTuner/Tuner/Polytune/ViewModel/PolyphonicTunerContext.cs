@@ -174,5 +174,21 @@ namespace Tuner.Polytune.ViewModel
         int nbColumnsByString;
 
         #endregion
+
+        protected override void OnNbStringsChanged()
+        {
+            updateDelsList();
+        }
+
+        protected override void OnScreenHeightChanged()
+        {
+            NbSteps = ScreenHeight;
+            updateDelsList();
+        }
+
+        protected override void OnScreenWidthChanged()
+        {
+            updateDelsList();
+        }
     }
 }

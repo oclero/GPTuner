@@ -18,13 +18,48 @@ namespace Tuner.Polytune.ViewModel
 
         public ObservableCollection<List<DelModel>> DelsList { get; set; }
 
-        public int NbStrings { get; set; }
+        private int nbStrings;
+        public int NbStrings
+        {
+            get { return nbStrings; }
+            set
+            {
+                nbStrings = value;
+                OnNbStringsChanged();
+            }
+        }
 
-        public int ScreenHeight { get; set; }
+        private int screenHeight;
+        public int ScreenHeight
+        {
+            get { return screenHeight; }
+            set
+            {
+                screenHeight = value;
+                OnScreenHeightChanged();
+            }
+        }
 
-        public int ScreenWidth { get; set; }
+        private int screenWidth;
+        public int ScreenWidth
+        {
+            get { return screenWidth; }
+            set
+            {
+                screenWidth = value;
+                OnScreenWidthChanged();
+            }
+        }
 
-        public double Threshold { get; set; }
+        private double threshold;
+        public double Threshold {
+            get { return threshold; }
+            set
+            {
+                threshold = value;
+                updateSteps();
+            }
+        }
 
         protected List<double> Steps { get; set; }
 
@@ -43,10 +78,10 @@ namespace Tuner.Polytune.ViewModel
 
         public TunerContext()
         {
-            NbStrings = DEFAULT_NB_STRINGS;
-            ScreenHeight = DEFAULT_SCREEN_HEIGHT;
-            ScreenWidth = DEFAULT_SCREEN_WIDTH;
-            Threshold = DEFAULT_THRESHOLD;
+            nbStrings = DEFAULT_NB_STRINGS;
+            screenHeight = DEFAULT_SCREEN_HEIGHT;
+            screenWidth = DEFAULT_SCREEN_WIDTH;
+            threshold = DEFAULT_THRESHOLD;
             Steps = new List<double>();
             DelsList = new ObservableCollection<List<DelModel>>();
         }
@@ -100,6 +135,12 @@ namespace Tuner.Polytune.ViewModel
         /// Actualise la Collection de Liste de DelModel
         /// </summary>
         protected abstract void updateDelsList();
+
+        protected abstract void OnNbStringsChanged();
+
+        protected abstract void OnScreenHeightChanged();
+
+        protected abstract void OnScreenWidthChanged();
 
     }
 }

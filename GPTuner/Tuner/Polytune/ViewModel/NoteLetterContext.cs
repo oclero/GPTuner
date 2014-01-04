@@ -159,6 +159,18 @@ namespace Tuner.Polytune.ViewModel
         public NoteLetterContext()
             : base()
         {
+            notesMap = new Dictionary<double, NoteLetters>();
+            initializeNotesMap();
+        }
+
+        private void initializeNotesMap()
+        {
+            notesMap.Add(40, NoteLetters.E);
+            notesMap.Add(45, NoteLetters.A);
+            notesMap.Add(50, NoteLetters.D);
+            notesMap.Add(55, NoteLetters.G);
+            notesMap.Add(59, NoteLetters.B);
+            notesMap.Add(64, NoteLetters.E);
         }
 
         private PlayedNote note;
@@ -175,17 +187,18 @@ namespace Tuner.Polytune.ViewModel
             }
         }
 
+        private Dictionary<double, NoteLetters> notesMap;
+
         protected override void updateDelsList()
         {
-
-            bool[,] tab;
+            bool[,] toBeDisplayed;
             if (Note != null)
             {
-                tab = getNoteArrayData(getStringNote(Note.GuitarStringNumber));
+                toBeDisplayed = getNoteArrayData(notesMap[Note.TargetedNote]);
             }
             else
             {
-                tab = NoneLeds;
+                toBeDisplayed = NoneLeds;
             }
             List<DelModel>[] delsColumns = new List<DelModel>[LEDS_WIDTH];
 
@@ -196,8 +209,8 @@ namespace Tuner.Polytune.ViewModel
                 for (int j = LEDS_HEIGHT-1; j >= 0 ; j--)
                 {
                     DelModel delModel = new DelModel();
-                    delModel.On = tab[j, i];
-                    delModel.Level = tab[j, i] ? Del.LEVEL_WRONG : Del.LEVEL_0;
+                    delModel.On = toBeDisplayed[j, i];
+                    delModel.Level = toBeDisplayed[j, i] ? Del.LEVEL_WRONG : Del.LEVEL_0;
                     delColumn.Add(delModel);
                 }
                 delsColumns[i] = delColumn;
@@ -211,8 +224,6 @@ namespace Tuner.Polytune.ViewModel
             }
         }
 
-        public static NoteLetters[] stdTuningNotes = { NoteLetters.E, NoteLetters.A, NoteLetters.D, NoteLetters.G, NoteLetters.B, NoteLetters.E };
-
         public enum NoteLetters { None, A, ASharp, B, BSharp, C, CSharp, D, DSharp, E, F, FSharp, G, GSharp, Square };
 
         private static bool[][,] correspondances = { NoneLeds, ALeds, ASharpLeds, BLeds, BSharpLeds, CLeds, CSharpLeds, DLeds, DSharpLeds, ELeds, FLeds, FSharpLeds, GLeds, GSharpLeds, SquareLeds };
@@ -224,12 +235,21 @@ namespace Tuner.Polytune.ViewModel
             return correspondances[(int)note];
         }
 
-        private NoteLetters getStringNote(int stringNumber)
-        {
-            return stdTuningNotes[stringNumber];
-        }
-
         #endregion
 
+        protected override void OnNbStringsChanged()
+        {
+            // Rien
+        }
+
+        protected override void OnScreenHeightChanged()
+        {
+            // Rien
+        }
+
+        protected override void OnScreenWidthChanged()
+        {
+            // Rien
+        }
     }
 }

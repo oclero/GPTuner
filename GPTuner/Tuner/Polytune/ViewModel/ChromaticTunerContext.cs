@@ -61,5 +61,20 @@ namespace Tuner.Polytune.ViewModel
             }
         }
 
+        protected override void OnNbStringsChanged()
+        {
+            // Rien
+        }
+
+        protected override void OnScreenHeightChanged()
+        {
+            updateDelsList();
+        }
+
+        protected override void OnScreenWidthChanged()
+        {
+            NbSteps = ScreenWidth;
+            updateDelsList();
+        }
     }
 }

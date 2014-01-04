@@ -52,12 +52,13 @@ namespace Tuner
             return false;
         }
 
+        private static NoteIdentifier identifier = new NoteIdentifier();
+
         /// <summary>
         /// "Joue" les cordes et declenche l'affichage en consequence
         /// </summary>
         public void PlayStringsExecute()
         {
-            NoteIdentifier identifier = new NoteIdentifier();
             PolytuneView.Signal = identifier.getProcessedSignal(PlayedStrings);
         }
 
